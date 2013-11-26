@@ -1,0 +1,60 @@
+<nav class="navbar deco cart">
+  <div class="navbar-inner">
+
+      <hr>
+
+      <h5>Shopping Cart</h5>
+
+      <hr>
+
+      <ul>
+        <!-- filter used bc Angular does not loop through objects in order -->
+        <li ng-repeat="value in $root.shippingOptions | orderObjectBy:value:false"
+            ng-cloak>
+            <span class="radioLink"
+                  ng-class="{'active':value.name === $root.shippingOptions[activeShippingKey].name}"
+                  ng-click="triggerShippingChange(value.name)">
+                  {{value.name | uppercase}}:
+            </span>
+            <span ng-if="value.name === $root.shippingOptions[activeShippingKey].name">
+                  {{$root.tallies.shipping | currency}}
+            </span>
+            <span ng-if="value.name !== $root.shippingOptions[activeShippingKey].name">
+                  {{0.00 | currency}}
+            </span>
+        </li>
+      </ul>
+
+      <hr>
+
+      <ul ng-cloak>
+
+        <!-- had thought of running ng-repeat but there 
+             are so many conditionals, its not worth it -->
+        <li><span>SUBTOTAL:</span><span>{{$root.tallies.subtotal | currency}}</span></li>
+        <li><span>TAX:</span><span>{{$root.tallies.tax * 100}}%</span></li>
+        <li>
+            <span ng-class="{'specialDiscount':specialDiscount}">SHIPPING:</span>
+            <span>{{$root.tallies.shipping | currency}}</span>
+        </li>
+        <li><span>TOTAL:</span><span>{{$root.tallies.total | currency}}</span></li>
+      </ul>
+
+
+
+  </div>
+</nav>
+
+<div class="added">
+    <div ng-repeat="product in $root.addedList"
+         class="pnode well"
+         ng-cloak>
+            <div>
+              <em>{{product.totalPrice | currency}} - Quantity: {{product.quantity}}</em>
+              <i class="icon-remove"
+                 ng-click="removeAddedItem(product.name)"></i>
+            </div>
+            <hr>
+            <span>{{product.name}}</span>
+    </div>
+</div>

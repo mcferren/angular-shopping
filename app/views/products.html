@@ -1,0 +1,26 @@
+<div class="row">
+  <div ng-repeat="row in productList">
+    <!-- this filter allows for autocomplete from search input -->
+    <div ng-repeat="product in row | filter:$root.searchText" 
+         class="span3 productBlock deco"
+         ng-cloak>
+
+         <span class="title">{{product.name}}</span>
+         <span ng-if="product.sale"
+               class="saledProduct"></span>
+         <span ng-if="product.editorsPick"
+               class="editorPick"></span>
+         <span class="thumbnail"><img ng-src="{{product.img}}"/></span>
+         <div>
+             <span>{{product.brand}}</span>
+             <span>{{product.merchant}}</span>
+             <span ng-class="{'saledPrice':product.sale}">{{product.listPrice | currency}}</span>
+             <span ng-if="product.sale">{{product.salePrice | currency}}</span>
+         </div>
+         <button type="button" 
+                 ng-click="addToCart(product)"
+                 class="btn btn-mini btn-success">Add to Cart</button>
+
+    </div>
+  </div>
+</div>

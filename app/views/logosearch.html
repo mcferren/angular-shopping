@@ -1,0 +1,19 @@
+<nav class="navbar deco logosearch">
+  <div class="navbar-inner"
+       ng-cloak>
+        <hr>
+       	<img ng-src="/images/big_borderfree_logo.png">
+        <hr>
+        <form class="form-search pull-right">
+			<div class="input-append">
+				<!-- model aligned with filter used to draw products on page -->
+				<input id="productSearchInput"
+					   ng-model="$root.searchText" 
+					   type="text" 
+					   class="search-query"
+					   placeholder="Product Search…"> <!-- filter feature per requirements -->
+				<button type="submit" class="btn btn-mini"><i class="icon-search"></i></button>
+			</div>
+		</form>
+  </div>
+</nav>
