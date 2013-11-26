@@ -2,7 +2,9 @@ angular-shopping
 ================
 
 First: clone repo
+
 Second: bower install
+
 Third: npm install
 
 
